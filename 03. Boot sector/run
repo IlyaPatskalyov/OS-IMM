@@ -1,0 +1,2 @@
+#!/bin/bash
+nasm -o $1.img $1.asm && qemu -fda $1.img -boot a
