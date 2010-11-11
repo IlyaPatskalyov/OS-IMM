@@ -11,7 +11,8 @@
 	mov	dh,0
 	mov	bx,zz
 	int	13h
-	jmp	zz
+	cmp	ah,0
+	je	zz
 
 	cli
 	hlt
