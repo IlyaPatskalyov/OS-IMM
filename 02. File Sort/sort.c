@@ -84,6 +84,8 @@ int main(int argc, char** argv) {
 			}
 		}			
 	}
-	fclose(fout);
+	code = fclose(fout);
+	if (code)
+		quit(3, "Could not close file");
 	return 0;
 }
