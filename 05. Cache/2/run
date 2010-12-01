@@ -1,0 +1,3 @@
+#!/bin/bash
+gcc -o 2.img -lpthread 2.c
+./2.img
