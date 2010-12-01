@@ -1,0 +1,20 @@
+#!/bin/bash
+echo 'Compile'
+gcc -o 3.img 3.c
+echo 'Switching'
+time ./3.img &
+j=0;
+pid=$!
+echo pid = $pid
+#for((i=0;i<=100;i += 1)); do
+while [ "`ps ax -o pid | grep $pid`" != "" ]; do
+	taskset -c -p $((j)) $pid 
+#	echo $?
+	j=$((j^1));
+done
+
+echo 'One processor'
+	time ./3.img 
+
+
+rm 3.img

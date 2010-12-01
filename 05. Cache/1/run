@@ -1,0 +1,9 @@
+#!/bin/bash
+echo First
+gcc -o 1.img 1a.c
+time ./1.img
+echo Second
+gcc -o 1.img 1b.c
+time ./1.img
+print $!
+rm 1.img
