@@ -1,0 +1,3 @@
+#!/bin/bash
+arg=boot
+nasm -o $arg.img $arg.asm  && qemu -fda $arg.img -boot a -monitor stdio
