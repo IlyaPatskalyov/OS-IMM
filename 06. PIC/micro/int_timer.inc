@@ -3,6 +3,6 @@ Int_Timer:
 	pusha
 	mov	si,Int_Timer_Message
 	mov	cx,5
-;	call	PrintString
+	call	PrintString
 	popa
 	iret

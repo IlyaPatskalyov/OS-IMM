@@ -15,8 +15,17 @@
 	mov	dh,ch
 	mov	bx,loadData
 	int	13h
-	;
-	jmp Kernel
+	
+	cmp	ax,5
+	je	Kernel
+
+	; boot failure
+	mov	ah,0ah
+	mov	al,'E'
+	mov	bh,0
+	mov	cx,1
+	int	10h
+	
 	cli
 	hlt
 
