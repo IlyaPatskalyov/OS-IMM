@@ -1,2 +1,5 @@
 a.out
 *.img
+*.o
+*.out
+*.dump

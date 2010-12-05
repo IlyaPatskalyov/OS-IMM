@@ -19,8 +19,6 @@ Kernel:
 	
 	jmp	os_code:run
 run:
-;	int	13
-;	hlt
 	jmp	run
 ;	int	13
 

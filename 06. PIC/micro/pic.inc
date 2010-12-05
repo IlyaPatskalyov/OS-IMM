@@ -23,50 +23,50 @@ ICW4_SFNM		equ		0x10	;  Special fully nested (not)
 
 PIC_Configure:
 	push	ax
+	push	bx
 	; re-initialize interrupt #1 contoller
 	in	al,PIC1_DATA
-	mov	ah,al
+	mov	bl,al
+	in	al,PIC2_DATA
+	mov	bh,al
 
 	mov	al, ICW1_INIT+ICW1_ICW4
 	out	PIC1_COMMAND,al
 	io_wait
+	mov	al, ICW1_INIT+ICW1_ICW4
+	out	PIC2_COMMAND,al
+	io_wait
+
 	
 	mov	al, PIC_START
 	out	PIC1_DATA, al
+	io_wait
+	mov	al, PIC_START+8
+	out	PIC2_DATA, al
+	io_wait
 
 	mov	al, 4
 	out	PIC1_DATA, al
 	io_wait
+	mov	al, 2
+	out	PIC2_DATA, al
+	io_wait
+
 	
 	mov	al, ICW4_8086
 	out	PIC1_DATA, al
 	io_wait
-	
-	mov	al,ah
-	out	PIC1_DATA,al
-
-	; ------------------------------------
-	; re-initialize interrupt #1 contoller
-	in	al,PIC2_DATA
-	mov	ah,al
-
-	mov	al, ICW1_INIT+ICW1_ICW4
-	out	PIC2_COMMAND,al
-	io_wait
-	
-	mov	al, PIC_START+8
-	out	PIC2_DATA, al
-
-	mov	al, 2
-	out	PIC2_DATA, al
-	io_wait
-	
 	mov	al, ICW4_8086
 	out	PIC2_DATA, al
 	io_wait
 	
-	mov	al,ah
+	mov	al,bl
+	out	PIC1_DATA,al
+	io_wait
+	mov	al,bh
 	out	PIC2_DATA,al
+	io_wait
 
+	pop	bx
 	pop	ax
 	ret

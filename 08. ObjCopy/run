@@ -1,0 +1,8 @@
+#!/bin/bash
+arg=main
+nasm -f elf $arg.asm
+ld -o $arg.out $arg.o
+./disasm $arg.out
+#
+gcc -o test.out test.c
+./disasm test.out
