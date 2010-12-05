@@ -1,6 +1,6 @@
 PrintString:
 	pusha
-	mov	ax,2*8
+	mov	ax,os_screen
 	mov	es,ax
 	xor	di,di
 	mov	ds,di

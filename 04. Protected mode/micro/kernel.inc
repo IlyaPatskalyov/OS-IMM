@@ -9,14 +9,20 @@ Kernel:
 	mov	cr0,eax
 	
 
-	mov	ax,3*8
+	mov	ax,os_data
 	mov	ss,ax
+	
+	call	PIC_Configure
 	
 	sti
 	
-	jmp	1*8:run
-run:
-	int	13
 	
+	jmp	os_code:run
+run:
+;	int	13
+;	hlt
+	jmp	run
+;	int	13
+
 	cli
 	hlt

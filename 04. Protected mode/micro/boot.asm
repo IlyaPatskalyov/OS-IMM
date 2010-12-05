@@ -1,5 +1,4 @@
-; http://stackoverflow.com/questions/282983/setting-up-irq-mapping
-;%include "macroses.inc"
+
 	org 7C00h
 	; init registers
 	cli
@@ -9,7 +8,7 @@
 	mov	ds,ax
 	mov	es,ax
 	sti
-
+	
 	; load segments
 	mov	ax,0205h
 	mov	cx,0002h
@@ -25,10 +24,13 @@
 	db	055h
 	db	0AAh
 loadData:
-
+%include "macro.inc"
 %include "utils.inc"
 %include "kernel.inc"
+%include "pic.inc"
 %include "int_other.inc"
 %include "int_13.inc"
+%include "int_timer.inc"
+%include "int_keyb.inc"
 %include "gdt.inc"
 %include "idt.inc"
