@@ -23,12 +23,7 @@ ICW4_SFNM		equ		0x10	;  Special fully nested (not)
 
 PIC_Configure:
 	push	ax
-	push	bx
 	; re-initialize interrupt #1 contoller
-	in	al,PIC1_DATA
-	mov	bl,al
-	in	al,PIC2_DATA
-	mov	bh,al
 
 	mov	al, ICW1_INIT+ICW1_ICW4
 	out	PIC1_COMMAND,al
@@ -60,13 +55,12 @@ PIC_Configure:
 	out	PIC2_DATA, al
 	io_wait
 	
-	mov	al,bl
+	mov	al,11111101b
 	out	PIC1_DATA,al
 	io_wait
-	mov	al,bh
+	mov	al,0FFh
 	out	PIC2_DATA,al
 	io_wait
 
-	pop	bx
 	pop	ax
 	ret

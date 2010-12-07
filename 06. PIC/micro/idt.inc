@@ -19,7 +19,7 @@ int04_d		idt_record	Int_Other, os_code, I_TRAP
 int05_d		idt_record	Int_Other, os_code, I_TRAP
 int06_d		idt_record	Int_Other, os_code, I_TRAP
 int07_d		idt_record	Int_Other, os_code, I_TRAP
-int08_d		idt_record	Int_Other, os_code, I_TRAP+I_PRESENT
+int08_d		idt_record	Int_Other, os_code, I_TRAP
 int09_d		idt_record	Int_Other, os_code, I_TRAP
 int0A_d		idt_record	Int_Other, os_code, I_TRAP
 int0B_d		idt_record	Int_Other, os_code, I_TRAP
