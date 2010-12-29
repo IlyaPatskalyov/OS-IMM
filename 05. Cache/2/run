@@ -1,3 +1,6 @@
 #!/bin/bash
-gcc -o 2.img -lpthread 2.c
-./2.img
+g++ -o 2.img -lpthread 2.c
+echo Common buffer
+time ./2.img s
+echo Different buffer
+time ./2.img f
