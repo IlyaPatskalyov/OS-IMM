@@ -3,3 +3,5 @@ a.out
 *.o
 *.out
 *.dump
+*.bin
+bin/
