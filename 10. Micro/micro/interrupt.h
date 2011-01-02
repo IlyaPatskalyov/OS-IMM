@@ -1,8 +1,8 @@
 #ifndef __INTERRUPT_H__
 #define __INTERRUPT_H__
 
-#define PIC1_VEC	0x08
-#define PIC2_VEC	0x70
+#define PIC1_VEC	0x20
+#define PIC2_VEC	0x28
 
 #define PIC1		0x20	/* IO base address for master PIC */
 #define PIC2		0xA0	/* IO base address for slave PIC */
