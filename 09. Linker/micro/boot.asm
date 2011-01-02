@@ -1,7 +1,7 @@
 [BITS 16]
 global start
 extern main
-extern timer
+extern int_timer
 section .text
 
 start:

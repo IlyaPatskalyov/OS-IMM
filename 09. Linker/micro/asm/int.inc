@@ -1,3 +1,3 @@
 Int_Other:
-	call	timer
+;	call	int_timer
 	iret
