@@ -1,8 +1,8 @@
 #ifndef __INTERRUPT_H__
 #define __INTERRUPT_H__
 
-#define PIC1_VEC	0x20
-#define PIC2_VEC	0x28
+#define PIC1_VEC	0x08
+#define PIC2_VEC	0x70
 
 #define PIC1		0x20	/* IO base address for master PIC */
 #define PIC2		0xA0	/* IO base address for slave PIC */
@@ -11,7 +11,7 @@
 #define PIC2_COMMAND	PIC2
 #define PIC2_DATA	(PIC2+1)
 
-#define ICW1_ICW4	0x01	/* ICW4 (not) needed */
+#define ICW1_ICW4	0x03	/* ICW4 (not) needed */
 #define ICW1_SINGLE	0x02	/* Single (cascade) mode */
 #define ICW1_INTERVAL4	0x04	/* Call address interval 4 (8) */
 #define ICW1_LEVEL	0x08	/* Level triggered (edge) mode */

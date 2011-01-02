@@ -12,7 +12,7 @@ void Interrupt::init(){
 	pointer.offset=(unsigned long)idt;
 	
 	asm("lidt %0" : "=m" (pointer));
-	pic_mask = 0xFFFD;
+	pic_mask = 0xFFFF;
 	picInit();
 	sti();
 }
@@ -41,14 +41,14 @@ void Interrupt::picInit()
 	outb(PIC2_COMMAND, ICW1_INIT+ICW1_ICW4);
 	io_wait();
 	
-	outb(PIC1_DATA, PIC1_VEC);                 // define the PIC vectors
-	io_wait();
-	outb(PIC2_DATA, PIC2_VEC);
-	io_wait();
+;	outb(PIC1_DATA, PIC1_VEC);                 // define the PIC vectors
+;	io_wait();
+;	outb(PIC2_DATA, PIC2_VEC);
+;	io_wait();
 	
-	outb(PIC1_DATA, 4);                       // continue initialization sequence
+	outb(PIC1_DATA, 8);                       // continue initialization sequence
 	io_wait();
-	outb(PIC2_DATA, 2);
+	outb(PIC2_DATA, 8);
 	io_wait();
  
 	outb(PIC1_DATA, ICW4_8086);

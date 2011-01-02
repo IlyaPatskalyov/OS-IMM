@@ -1,41 +1,22 @@
-%include "asm/macro.inc"
-
+bits 16
 global start
 start:
 	; init registers
 	cli
 	xor	ax,ax
-	mov	sp,ax
-	mov	ss,ax
 	mov	ds,ax
-	mov	es,ax
 	sti
 	
 	; load segments
 	mov	ax,0214h
 	mov	cx,0002h
 	mov	dh,ch
-	mov	bx,init
+	mov	bx,run
 	int	13h
 	
 	cmp	ax,14h
-	je	init
+	jne	error
 
-	; boot failure
-	mov	ah,0ah
-	mov	al,'E'
-	mov	bh,0
-	mov	cx,1
-	int	10h
-	mov	ax,0DEADh
-	
-	cli
-	hlt
-
-	times	510 - ($ - $$) db 0
-	db	055h
-	db	0AAh
-init:
 	cli
 	lgdt	[GDT_Pointer]
 
@@ -43,7 +24,7 @@ init:
 	or	al,1
 	mov	cr0,eax
 	
-	mov	ax, os_data
+	mov	ax, 0x10
 	mov	ss, ax
 	mov	ds, ax
 	mov	es, ax
@@ -53,8 +34,30 @@ init:
 	mov	sp, 0xFFFF
 
 	sti
-	
-	jmp	os_code:run
+	jmp	0x08:run
 
-%include "asm/gdt.inc"
-%include "asm/run.inc"
+error:
+	; boot failure
+	mov	eax, 0xB8000
+	mov	word [eax], 0xC45
+
+	cli
+	hlt
+
+GDT_Table:
+	db	0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+	db	0xFF,0xFF,0x00,0x00,0x00,0x9A,0xCF,0x00
+	db	0xFF,0xFF,0x00,0x00,0x00,0x92,0xCF,0x00
+GDT_Pointer:
+	dw	GDT_Pointer-GDT_Table-1
+	dw	GDT_Table
+	dw	0
+
+
+	times	510 - ($ - $$) db 0
+	db	055h
+	db	0AAh
+bits 32
+extern	main
+run:
+	call	main
