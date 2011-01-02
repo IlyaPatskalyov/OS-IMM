@@ -22,3 +22,4 @@
 	dw	0
 %endmacro
 
+bits 16

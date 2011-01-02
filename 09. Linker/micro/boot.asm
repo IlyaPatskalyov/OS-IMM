@@ -1,12 +1,7 @@
-[BITS 16]
-global start
-extern main
-extern int_timer
-extern intKeyboard
-section .text
+%include "asm/macro.inc"
 
+global start
 start:
-;	org 7C00h
 	; init registers
 	cli
 	xor	ax,ax
@@ -20,11 +15,11 @@ start:
 	mov	ax,0211h
 	mov	cx,0002h
 	mov	dh,ch
-	mov	bx,loadData
+	mov	bx,init
 	int	13h
 	
 	cmp	ax,11h
-	je	Kernel
+	je	init
 
 	; boot failure
 	mov	ah,0ah
@@ -40,10 +35,29 @@ start:
 	times	510 - ($ - $$) db 0
 	db	055h
 	db	0AAh
-loadData:
-%include "asm/macro.inc"
-%include "asm/kernel.inc"
+init:
+	cli
+	lgdt	[GDT_Pointer]
+	lidt	[IDT_Pointer]
+
+	mov	eax,cr0
+	or	al,1
+	mov	cr0,eax
+	
+	mov	ax,os_data
+	mov	ss, ax
+	mov	ds, ax
+	mov	es, ax
+	mov	ss, ax
+	mov	fs, ax
+	mov	gs, ax
+	mov	sp, 0xFFFF
+
+	call	PIC_Configure
+	sti
+	
+	jmp	os_code:run
 %include "asm/pic.inc"
-%include "asm/int.inc"
 %include "asm/gdt.inc"
 %include "asm/idt.inc"
+%include "asm/run.inc"

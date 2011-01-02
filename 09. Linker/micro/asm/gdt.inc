@@ -1,3 +1,4 @@
+bits 32
 GDT_Table:
 			gdt_record	0,	0,	0,	0,		0,		0
 	os_code_d	gdt_record	0xFFFF,	0x0000,	0x00,	10011010b,	11001111b,	0x00

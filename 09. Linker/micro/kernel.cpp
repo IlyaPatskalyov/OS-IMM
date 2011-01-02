@@ -6,7 +6,7 @@ Video* getVideo(){
 }
 
 
-extern "C" void intKeyboard(){
+extern "C" void int_Keyboard(){
 	char symbol = Base::inport(0x60);
 	Video * v = getVideo();
 	v->put(symbol);
@@ -20,4 +20,5 @@ int main(void)
 	v->init();
 	v->clear();
 	v->write("zzz");
+	for(;;);
 }
