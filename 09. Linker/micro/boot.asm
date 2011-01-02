@@ -1,6 +1,7 @@
 [BITS 16]
 global start
 extern main
+extern timer
 section .text
 
 start:
@@ -41,7 +42,7 @@ start:
 loadData:
 %include "asm/macro.inc"
 %include "asm/kernel.inc"
-%include "asm/int.inc"
 %include "asm/pic.inc"
+%include "asm/int.inc"
 %include "asm/gdt.inc"
 %include "asm/idt.inc"

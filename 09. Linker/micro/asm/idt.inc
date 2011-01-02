@@ -5,6 +5,7 @@ IDT_Pointer:
 
 I_TRAP		equ	0x07
 I_INT		equ	0x06
+I_INT_32	equ	0x0E
 I_DPL1		equ	0x20
 I_DPL2		equ	0x40
 I_DPL3		equ	0x60
@@ -46,7 +47,7 @@ int1E_d		idt_record	Int_Other, os_code, I_TRAP
 int1F_d		idt_record	Int_Other, os_code, I_TRAP
 
 int20_d		idt_record	Int_Other, os_code, I_TRAP	; IRQ 0 (Timer)
-int21_d		idt_record	Int_Other, os_code, I_TRAP	; IRQ 1	(Keyboard)
+int21_d		idt_record	Int_Other, os_code, I_INT_32+I_PRESENT	; IRQ 1	(Keyboard)
 int22_d		idt_record	Int_Other, os_code, I_TRAP	; IRQ 2
 int23_d		idt_record	Int_Other, os_code, I_TRAP	; IRQ 3
 int24_d		idt_record	Int_Other, os_code, I_TRAP	; IRQ 4

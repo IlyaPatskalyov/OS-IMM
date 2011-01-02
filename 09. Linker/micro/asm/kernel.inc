@@ -17,13 +17,16 @@ Kernel:
 	mov	gs, ax
 	mov	sp, 0xFFFF
 
-;	call	PIC_Configure
+	call	PIC_Configure
 	sti
 	
 	jmp	os_code:run
 [BITS 32]
 run:
+
 	call	main
+loop:
+	jmp	loop
 
 	cli
 	hlt
