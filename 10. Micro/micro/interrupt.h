@@ -11,7 +11,7 @@
 #define PIC2_COMMAND	PIC2
 #define PIC2_DATA	(PIC2+1)
 
-#define ICW1_ICW4	0x03	/* ICW4 (not) needed */
+#define ICW1_ICW4	0x01	/* ICW4 (not) needed */
 #define ICW1_SINGLE	0x02	/* Single (cascade) mode */
 #define ICW1_INTERVAL4	0x04	/* Call address interval 4 (8) */
 #define ICW1_LEVEL	0x08	/* Level triggered (edge) mode */
