@@ -2,7 +2,7 @@
 #define __BASE_H__
 
 inline static void io_wait(){
-	asm ("jmp $+2");
+	asm ("jmp 1f;1:jmp 1f;1:");
 }
 
 inline static void sti()
@@ -22,13 +22,13 @@ inline static void halt()
 
 inline static unsigned char inb(unsigned short port){
 	unsigned char ret;
-	asm  ("inb al, dx\n" : "=a" (ret) : "d" (port));
+	asm  ("inb %%dx, %%al\n" : "=a" (ret) : "d" (port));
 	return ret;
 }
 
 inline static void outb(int port, unsigned char data)
 {
-	asm volatile ( "outb dx, al\n":: "a" (data), "d" (port)	);
+	asm volatile ( "out %%al, %%dx\n":: "a" (data), "d" (port)	);
 }
 
 
