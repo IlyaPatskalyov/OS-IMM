@@ -11,14 +11,17 @@ CF = -c -nostdlib -fno-builtin -fno-rtti -fno-exceptions -masm=intel
 
 image: clean bin bin/kernel.bin
 
-bin/kernel.bin: bin/boot.o bin/video.o bin/kernel.o
-	$(L) $(LF) -o bin/kernel.bin bin/boot.o bin/kernel.o bin/video.o
+bin/kernel.bin: bin/boot.o bin/video.o bin/base.o bin/kernel.o 
+	$(L) $(LF) -o bin/kernel.bin bin/boot.o bin/kernel.o bin/video.o bin/base.o
 
 bin/kernel.o: kernel.cpp bin/video.o
 	$(C) $(CF) -o bin/kernel.o kernel.cpp
 
 bin/video.o: video.cpp
 	$(C) $(CF) -o bin/video.o video.cpp
+
+bin/base.o: base.cpp
+	$(C) $(CF) -o bin/base.o base.cpp
 
 bin/boot.o: boot.asm
 	$(A) $(AE) -o bin/boot.o boot.asm

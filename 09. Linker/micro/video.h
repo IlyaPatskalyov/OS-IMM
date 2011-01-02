@@ -1,5 +1,3 @@
-#ifndef VIDEO_H
-#define VIDEO_H
 class Video
 {
 public:
@@ -13,4 +11,3 @@ private:
     unsigned int off;
     unsigned int pos;
 };
-#endif

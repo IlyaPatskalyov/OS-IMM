@@ -1,17 +1,16 @@
 #include "video.h"
+#include "base.h"
 
 Video* getVideo(){
 	return (Video*)0xA000;
 }
 
+
 extern "C" void intKeyboard(){
-	char symbol;
-	asm("in al,0x60\n");
-	asm("mov byte ptr [ebp-0xd],al\n");
+	char symbol = Base::inport(0x60);
 	Video * v = getVideo();
 	v->put(symbol);
-	asm("mov al, 0x20\n");
-	asm("out 0x20, al\n");
+	Base::outport(0x20, 0x20);
 	asm("leave\niret\n");
 }
 
