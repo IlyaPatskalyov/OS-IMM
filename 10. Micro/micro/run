@@ -1,0 +1,3 @@
+#!/bin/bash
+make
+qemu -fda bin/kernel.bin -boot a -monitor stdio -d in_asm
