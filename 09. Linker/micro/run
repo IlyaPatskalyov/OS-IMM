@@ -1,0 +1,6 @@
+#!/bin/bash
+gcc -march=i386 -c kernel.c -nostdlib -fno-builtin -fno-exceptions -fno-rtti
+nasm -f aout boot.asm -o boot.o
+ld -T linker.ld -o kernel.bin boot.o kernel.o
+cat kernel.bin null >floppy.img
+qemu -fda floppy.img -boot a -monitor stdio -d in_asm

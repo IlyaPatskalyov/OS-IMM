@@ -1,0 +1,2 @@
+Int_Other:
+	iret
