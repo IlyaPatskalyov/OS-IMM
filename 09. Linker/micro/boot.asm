@@ -1,6 +1,7 @@
 [BITS 16]
 global start
 extern main
+section .text
 
 start:
 ;	org 7C00h
@@ -14,13 +15,13 @@ start:
 	sti
 	
 	; load segments
-	mov	ax,0207h
+	mov	ax,0211h
 	mov	cx,0002h
 	mov	dh,ch
 	mov	bx,loadData
 	int	13h
 	
-	cmp	ax,7
+	cmp	ax,11h
 	je	Kernel
 
 	; boot failure
@@ -38,9 +39,9 @@ start:
 	db	055h
 	db	0AAh
 loadData:
-%include "macro.inc"
-%include "kernel.inc"
-%include "int.inc"
-%include "pic.inc"
-%include "gdt.inc"
-%include "idt.inc"
+%include "asm/macro.inc"
+%include "asm/kernel.inc"
+%include "asm/int.inc"
+%include "asm/pic.inc"
+%include "asm/gdt.inc"
+%include "asm/idt.inc"
