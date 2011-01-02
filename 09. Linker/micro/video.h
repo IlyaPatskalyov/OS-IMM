@@ -1,13 +1,18 @@
+#ifndef __VIDEO_H__
+#define __VIDEO_H__
+
 class Video
 {
 public:
-    void init();
-    void clear();
-    void write(char *cp);
-    void put(char c);
+	void init();
+	void clear();
+	void write(char *cp);
+	void put(char c);
 private:
-    void nextline();
-    unsigned short *mem;
-    unsigned int off;
-    unsigned int pos;
+	void newline();
+	unsigned short *mem;
+	unsigned int off;
+	unsigned int pos;
 };
+
+#endif

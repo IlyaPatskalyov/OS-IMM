@@ -53,11 +53,10 @@ init:
 	mov	gs, ax
 	mov	sp, 0xFFFF
 
-	call	PIC_Configure
 	sti
 	
 	jmp	os_code:run
-%include "asm/pic.inc"
+
 %include "asm/gdt.inc"
 %include "asm/idt.inc"
 %include "asm/run.inc"
