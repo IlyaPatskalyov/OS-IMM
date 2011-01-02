@@ -5,19 +5,19 @@ SECTIONS{
 	.text . :  {
 		code = .;
 		*(.text)
-		. = ALIGN(0x1000);
+		. = ALIGN(0x200);
 	}
 	
-	.data 0x9000 : {
+	.data 0xA000 : {
 		data = .;
 		*(.data)
-		. = ALIGN(0x1000);
+		. = ALIGN(0x200);
 	}
 	
 	.rodata . : {
 		rodata = .;
 		*(.rodata)
-		. = ALIGN(4096);
+		. = ALIGN(0x200);
 	}
 	
 	.bss : {

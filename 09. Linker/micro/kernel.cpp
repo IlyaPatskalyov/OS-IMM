@@ -1,27 +1,32 @@
 #include "video.h"
+#include "keyboard.h"
 #include "base.h"
 #include "pic.h"
 
-inline static Video* getVideo(){
-	return (Video*)0xA000;
-}
+char * mess = "Micro OS\n\n";
+Video v;
+Keyboard k;
 
-extern "C" void int_Keyboard(){
-	char symbol = inb(0x60);
-	outb(0x20, 0x20);
-
-	Video * v = getVideo();
-	v->put(symbol);
+extern "C" void int_keyboard(){
+	cli();
+	k.interrupt();
+	sti();
 	asm("leave");
 	asm("iret");
 }
+
 int main(void)
 {
 	init_pic();
-	
-	Video * v = getVideo();
-	v->init();
-	v->clear();
-	v->write("zzz");
-	for(;;);
+	k.init();
+	v.init();
+	v.clear();
+	v.write(mess);
+	for(;;){
+		cli();
+		while (!k.isEmpty()){
+			v.put(k.get());
+		}
+		sti();
+	}
 }

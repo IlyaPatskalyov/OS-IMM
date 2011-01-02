@@ -1,4 +1,3 @@
-extern int_Keyboard
 
 IDT_Pointer:
 	dw	IDT_Table_End - IDT_Table
@@ -49,7 +48,8 @@ int1E_d		idt_record	int_handler, os_code, I_TRAP
 int1F_d		idt_record	int_handler, os_code, I_TRAP
 
 int20_d		idt_record	int_handler, os_code, I_TRAP	; IRQ 0 (Timer)
-int21_d		idt_record	int_Keyboard, os_code, I_INT_32+I_PRESENT	; IRQ 1	(Keyboard)
+extern				int_keyboard
+int21_d		idt_record	int_keyboard, os_code, I_INT_32+I_PRESENT	; IRQ 1	(Keyboard)
 int22_d		idt_record	int_handler, os_code, I_TRAP	; IRQ 2
 int23_d		idt_record	int_handler, os_code, I_TRAP	; IRQ 3
 int24_d		idt_record	int_handler, os_code, I_TRAP	; IRQ 4

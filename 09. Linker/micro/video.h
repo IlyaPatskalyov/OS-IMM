@@ -4,13 +4,15 @@
 class Video
 {
 public:
+	Video();
 	void init();
 	void clear();
 	void write(char *cp);
 	void put(char c);
 private:
 	void newline();
-	unsigned short *mem;
+	void setcursor();
+	unsigned short *mem, crtc;
 	unsigned int off;
 	unsigned int pos;
 };

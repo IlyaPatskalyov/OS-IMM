@@ -12,13 +12,13 @@ start:
 	sti
 	
 	; load segments
-	mov	ax,0211h
+	mov	ax,0214h
 	mov	cx,0002h
 	mov	dh,ch
 	mov	bx,init
 	int	13h
 	
-	cmp	ax,11h
+	cmp	ax,14h
 	je	init
 
 	; boot failure
@@ -44,7 +44,7 @@ init:
 	or	al,1
 	mov	cr0,eax
 	
-	mov	ax,os_data
+	mov	ax, os_data
 	mov	ss, ax
 	mov	ds, ax
 	mov	es, ax

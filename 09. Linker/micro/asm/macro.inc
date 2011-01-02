@@ -1,12 +1,3 @@
-%macro io_wait 0
-	jmp	$+2
-%endmacro
-
-%macro outbb 2
-	mov	al,%2
-	out	al,%1
-%endmacro
-
 %macro gdt_record 6
 	dw	%1		; limit [15..0]
 	dw	%2		; base  [15..0]
