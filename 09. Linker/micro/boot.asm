@@ -2,6 +2,7 @@
 global start
 extern main
 extern int_timer
+extern intKeyboard
 section .text
 
 start:

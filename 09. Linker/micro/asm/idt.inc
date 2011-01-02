@@ -47,7 +47,7 @@ int1E_d		idt_record	Int_Other, os_code, I_TRAP
 int1F_d		idt_record	Int_Other, os_code, I_TRAP
 
 int20_d		idt_record	Int_Other, os_code, I_TRAP	; IRQ 0 (Timer)
-int21_d		idt_record	int_timer, os_code, I_INT_32+I_PRESENT	; IRQ 1	(Keyboard)
+int21_d		idt_record	intKeyboard, os_code, I_INT_32+I_PRESENT	; IRQ 1	(Keyboard)
 int22_d		idt_record	Int_Other, os_code, I_TRAP	; IRQ 2
 int23_d		idt_record	Int_Other, os_code, I_TRAP	; IRQ 3
 int24_d		idt_record	Int_Other, os_code, I_TRAP	; IRQ 4
