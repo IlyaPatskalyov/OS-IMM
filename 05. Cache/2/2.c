@@ -19,7 +19,7 @@ static void wait_thread(void)
 	while (time(NULL) == start_time);
 }
 
-long long test_array[SIZE];
+volatile long long test_array[SIZE];
 
 static void *thread_counter(void *args)
 {
