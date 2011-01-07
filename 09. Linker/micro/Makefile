@@ -6,7 +6,7 @@ AF = -f bin
 AE = -f aout
 
 C  = g++
-CF = -c -nostdlib -fno-builtin -fno-rtti -fno-exceptions -masm=intel
+CF = -c -nostdlib -fno-builtin -fno-rtti -fno-exceptions
 
 
 image: clean bin bin/kernel.bin

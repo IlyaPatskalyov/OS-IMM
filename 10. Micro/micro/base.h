@@ -4,7 +4,7 @@
 #define iret() asm("leave\niret")
 
 inline static void io_wait(){
-	asm ("jmp 1f;1:jmp 1f;1:");
+	asm ("jmp $+2");
 }
 
 inline static void sti()
@@ -24,13 +24,13 @@ inline static void halt()
 
 inline static unsigned char inb(unsigned short port){
 	unsigned char ret;
-	asm  ("inb %%dx, %%al\n" : "=a" (ret) : "d" (port));
+	asm  ("inb al, dx\n" : "=a" (ret) : "d" (port));
 	return ret;
 }
 
 inline static void outb(int port, unsigned char data)
 {
-	asm volatile ( "out %%al, %%dx\n":: "a" (data), "d" (port)	);
+	asm volatile ( "outb dx, al\n":: "a" (data), "d" (port)	);
 }
 
 
