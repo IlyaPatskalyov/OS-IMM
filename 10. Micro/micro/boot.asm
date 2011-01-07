@@ -24,16 +24,6 @@ start:
 	or	al,1
 	mov	cr0,eax
 	
-	mov	ax, 0x10
-	mov	ss, ax
-	mov	ds, ax
-	mov	es, ax
-	mov	ss, ax
-	mov	fs, ax
-	mov	gs, ax
-	mov	sp, 0xFFFF
-
-	sti
 	jmp	0x08:run
 
 error:
@@ -58,6 +48,17 @@ GDT_Pointer:
 	db	055h
 	db	0AAh
 bits 32
-extern	main
 run:
+	mov	ax, 0x10
+	mov	ss, ax
+	mov	ds, ax
+	mov	es, ax
+	mov	ss, ax
+	mov	fs, ax
+	mov	gs, ax
+	mov	sp, 0xFFFF
+
+	sti
+	
+extern	main
 	call	main

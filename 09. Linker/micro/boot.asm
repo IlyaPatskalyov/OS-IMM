@@ -44,17 +44,6 @@ init:
 	or	al,1
 	mov	cr0,eax
 	
-	mov	ax, os_data
-	mov	ss, ax
-	mov	ds, ax
-	mov	es, ax
-	mov	ss, ax
-	mov	fs, ax
-	mov	gs, ax
-	mov	sp, 0xFFFF
-
-	sti
-	
 	jmp	os_code:run
 
 %include "asm/gdt.inc"

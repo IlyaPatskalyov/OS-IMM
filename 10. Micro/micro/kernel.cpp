@@ -12,8 +12,7 @@ extern void int_keyboard(){
 	cli();
 	k.interrupt();
 	sti();
-	asm("leave");
-	asm("iret");
+	iret();
 }
 
 extern void default_handler(){
@@ -21,8 +20,7 @@ extern void default_handler(){
 	outb(0x20, 0x20);
 	v.put('z');
 	sti();
-	asm("leave");
-	asm("iret");
+	iret();
 }
 
 

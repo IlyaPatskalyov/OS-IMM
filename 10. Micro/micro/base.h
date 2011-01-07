@@ -1,6 +1,8 @@
 #ifndef __BASE_H__
 #define __BASE_H__
 
+#define iret() asm("leave\niret")
+
 inline static void io_wait(){
 	asm ("jmp 1f;1:jmp 1f;1:");
 }

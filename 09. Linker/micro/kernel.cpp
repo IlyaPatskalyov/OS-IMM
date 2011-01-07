@@ -7,12 +7,8 @@ char * mess = "Micro OS\n\n";
 Video v;
 Keyboard k;
 
-extern "C" void int_keyboard(){
-	cli();
+extern "C" void int_c_keyboard(){
 	k.interrupt();
-	sti();
-	asm("leave");
-	asm("iret");
 }
 
 int main(void)
