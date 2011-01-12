@@ -1,8 +1,17 @@
 #!/bin/bash
-arg=main
-nasm -f elf $arg.asm
-ld -o $arg.out $arg.o
-./disasm $arg.out
-#
-gcc -o test.out test.c
-./disasm test.out
+gcc -o test.elf.img test.c
+gcc -c -o test.o.img test.c
+
+objdump -h test.elf.img 
+objcopy -O binary test.elf.img test.elf.all.img
+objcopy -O binary --only-section .text test.elf.img test.elf.text.img
+objcopy -O binary --only-section .data test.elf.img test.elf.data.img
+objcopy -O binary --only-section .rodata test.elf.img test.elf.rodata.img
+
+objdump -h test.o.img 
+objcopy -O binary test.o.img test.o.all.img
+objcopy -O binary --only-section .text test.o.img test.o.text.img
+objcopy -O binary --only-section .data test.o.img test.o.data.img
+objcopy -O binary --only-section .rodata test.o.img test.o.rodata.img
+
+ls -lh *.img
