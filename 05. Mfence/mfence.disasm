@@ -1,0 +1,486 @@
+
+mfence.out:     file format elf32-i386
+
+
+Disassembly of section .init:
+
+08048448 <_init>:
+ 8048448:	55                   	push   ebp
+ 8048449:	89 e5                	mov    ebp,esp
+ 804844b:	53                   	push   ebx
+ 804844c:	83 ec 04             	sub    esp,0x4
+ 804844f:	e8 00 00 00 00       	call   8048454 <_init+0xc>
+ 8048454:	5b                   	pop    ebx
+ 8048455:	81 c3 b8 18 00 00    	add    ebx,0x18b8
+ 804845b:	8b 93 fc ff ff ff    	mov    edx,DWORD PTR [ebx-0x4]
+ 8048461:	85 d2                	test   edx,edx
+ 8048463:	74 05                	je     804846a <_init+0x22>
+ 8048465:	e8 3e 00 00 00       	call   80484a8 <__gmon_start__@plt>
+ 804846a:	e8 31 01 00 00       	call   80485a0 <frame_dummy>
+ 804846f:	e8 7c 05 00 00       	call   80489f0 <__do_global_ctors_aux>
+ 8048474:	58                   	pop    eax
+ 8048475:	5b                   	pop    ebx
+ 8048476:	c9                   	leave  
+ 8048477:	c3                   	ret    
+
+Disassembly of section .plt:
+
+08048478 <pthread_join@plt-0x10>:
+ 8048478:	ff 35 10 9d 04 08    	push   DWORD PTR ds:0x8049d10
+ 804847e:	ff 25 14 9d 04 08    	jmp    DWORD PTR ds:0x8049d14
+ 8048484:	00 00                	add    BYTE PTR [eax],al
+	...
+
+08048488 <pthread_join@plt>:
+ 8048488:	ff 25 18 9d 04 08    	jmp    DWORD PTR ds:0x8049d18
+ 804848e:	68 00 00 00 00       	push   0x0
+ 8048493:	e9 e0 ff ff ff       	jmp    8048478 <_init+0x30>
+
+08048498 <pthread_exit@plt>:
+ 8048498:	ff 25 1c 9d 04 08    	jmp    DWORD PTR ds:0x8049d1c
+ 804849e:	68 08 00 00 00       	push   0x8
+ 80484a3:	e9 d0 ff ff ff       	jmp    8048478 <_init+0x30>
+
+080484a8 <__gmon_start__@plt>:
+ 80484a8:	ff 25 20 9d 04 08    	jmp    DWORD PTR ds:0x8049d20
+ 80484ae:	68 10 00 00 00       	push   0x10
+ 80484b3:	e9 c0 ff ff ff       	jmp    8048478 <_init+0x30>
+
+080484b8 <__libc_start_main@plt>:
+ 80484b8:	ff 25 24 9d 04 08    	jmp    DWORD PTR ds:0x8049d24
+ 80484be:	68 18 00 00 00       	push   0x18
+ 80484c3:	e9 b0 ff ff ff       	jmp    8048478 <_init+0x30>
+
+080484c8 <printf@plt>:
+ 80484c8:	ff 25 28 9d 04 08    	jmp    DWORD PTR ds:0x8049d28
+ 80484ce:	68 20 00 00 00       	push   0x20
+ 80484d3:	e9 a0 ff ff ff       	jmp    8048478 <_init+0x30>
+
+080484d8 <pthread_create@plt>:
+ 80484d8:	ff 25 2c 9d 04 08    	jmp    DWORD PTR ds:0x8049d2c
+ 80484de:	68 28 00 00 00       	push   0x28
+ 80484e3:	e9 90 ff ff ff       	jmp    8048478 <_init+0x30>
+
+080484e8 <exit@plt>:
+ 80484e8:	ff 25 30 9d 04 08    	jmp    DWORD PTR ds:0x8049d30
+ 80484ee:	68 30 00 00 00       	push   0x30
+ 80484f3:	e9 80 ff ff ff       	jmp    8048478 <_init+0x30>
+
+080484f8 <pthread_setaffinity_np@plt>:
+ 80484f8:	ff 25 34 9d 04 08    	jmp    DWORD PTR ds:0x8049d34
+ 80484fe:	68 38 00 00 00       	push   0x38
+ 8048503:	e9 70 ff ff ff       	jmp    8048478 <_init+0x30>
+
+Disassembly of section .text:
+
+08048510 <_start>:
+ 8048510:	31 ed                	xor    ebp,ebp
+ 8048512:	5e                   	pop    esi
+ 8048513:	89 e1                	mov    ecx,esp
+ 8048515:	83 e4 f0             	and    esp,0xfffffff0
+ 8048518:	50                   	push   eax
+ 8048519:	54                   	push   esp
+ 804851a:	52                   	push   edx
+ 804851b:	68 80 89 04 08       	push   0x8048980
+ 8048520:	68 90 89 04 08       	push   0x8048990
+ 8048525:	51                   	push   ecx
+ 8048526:	56                   	push   esi
+ 8048527:	68 50 87 04 08       	push   0x8048750
+ 804852c:	e8 87 ff ff ff       	call   80484b8 <__libc_start_main@plt>
+ 8048531:	f4                   	hlt    
+ 8048532:	90                   	nop
+ 8048533:	90                   	nop
+ 8048534:	90                   	nop
+ 8048535:	90                   	nop
+ 8048536:	90                   	nop
+ 8048537:	90                   	nop
+ 8048538:	90                   	nop
+ 8048539:	90                   	nop
+ 804853a:	90                   	nop
+ 804853b:	90                   	nop
+ 804853c:	90                   	nop
+ 804853d:	90                   	nop
+ 804853e:	90                   	nop
+ 804853f:	90                   	nop
+
+08048540 <__do_global_dtors_aux>:
+ 8048540:	55                   	push   ebp
+ 8048541:	89 e5                	mov    ebp,esp
+ 8048543:	53                   	push   ebx
+ 8048544:	83 ec 04             	sub    esp,0x4
+ 8048547:	80 3d 40 9d 04 08 00 	cmp    BYTE PTR ds:0x8049d40,0x0
+ 804854e:	75 3f                	jne    804858f <__do_global_dtors_aux+0x4f>
+ 8048550:	a1 44 9d 04 08       	mov    eax,ds:0x8049d44
+ 8048555:	bb 10 9c 04 08       	mov    ebx,0x8049c10
+ 804855a:	81 eb 0c 9c 04 08    	sub    ebx,0x8049c0c
+ 8048560:	c1 fb 02             	sar    ebx,0x2
+ 8048563:	83 eb 01             	sub    ebx,0x1
+ 8048566:	39 d8                	cmp    eax,ebx
+ 8048568:	73 1e                	jae    8048588 <__do_global_dtors_aux+0x48>
+ 804856a:	8d b6 00 00 00 00    	lea    esi,[esi+0x0]
+ 8048570:	83 c0 01             	add    eax,0x1
+ 8048573:	a3 44 9d 04 08       	mov    ds:0x8049d44,eax
+ 8048578:	ff 14 85 0c 9c 04 08 	call   DWORD PTR [eax*4+0x8049c0c]
+ 804857f:	a1 44 9d 04 08       	mov    eax,ds:0x8049d44
+ 8048584:	39 d8                	cmp    eax,ebx
+ 8048586:	72 e8                	jb     8048570 <__do_global_dtors_aux+0x30>
+ 8048588:	c6 05 40 9d 04 08 01 	mov    BYTE PTR ds:0x8049d40,0x1
+ 804858f:	83 c4 04             	add    esp,0x4
+ 8048592:	5b                   	pop    ebx
+ 8048593:	5d                   	pop    ebp
+ 8048594:	c3                   	ret    
+ 8048595:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+ 8048599:	8d bc 27 00 00 00 00 	lea    edi,[edi+eiz*1+0x0]
+
+080485a0 <frame_dummy>:
+ 80485a0:	55                   	push   ebp
+ 80485a1:	89 e5                	mov    ebp,esp
+ 80485a3:	83 ec 18             	sub    esp,0x18
+ 80485a6:	a1 14 9c 04 08       	mov    eax,ds:0x8049c14
+ 80485ab:	85 c0                	test   eax,eax
+ 80485ad:	74 12                	je     80485c1 <frame_dummy+0x21>
+ 80485af:	b8 00 00 00 00       	mov    eax,0x0
+ 80485b4:	85 c0                	test   eax,eax
+ 80485b6:	74 09                	je     80485c1 <frame_dummy+0x21>
+ 80485b8:	c7 04 24 14 9c 04 08 	mov    DWORD PTR [esp],0x8049c14
+ 80485bf:	ff d0                	call   eax
+ 80485c1:	c9                   	leave  
+ 80485c2:	c3                   	ret    
+ 80485c3:	90                   	nop
+ 80485c4:	90                   	nop
+ 80485c5:	90                   	nop
+ 80485c6:	90                   	nop
+ 80485c7:	90                   	nop
+ 80485c8:	90                   	nop
+ 80485c9:	90                   	nop
+ 80485ca:	90                   	nop
+ 80485cb:	90                   	nop
+ 80485cc:	90                   	nop
+ 80485cd:	90                   	nop
+ 80485ce:	90                   	nop
+ 80485cf:	90                   	nop
+
+080485d0 <_ZL14thread_counterPv>:
+ 80485d0:	55                   	push   ebp
+ 80485d1:	89 e5                	mov    ebp,esp
+ 80485d3:	57                   	push   edi
+ 80485d4:	56                   	push   esi
+ 80485d5:	53                   	push   ebx
+ 80485d6:	bb 80 96 98 00       	mov    ebx,0x989680
+ 80485db:	83 ec 3c             	sub    esp,0x3c
+ 80485de:	0f b6 45 08          	movzx  eax,BYTE PTR [ebp+0x8]
+ 80485e2:	3c 01                	cmp    al,0x1
+ 80485e4:	0f be d0             	movsx  edx,al
+ 80485e7:	0f 95 45 d7          	setne  BYTE PTR [ebp-0x29]
+ 80485eb:	83 f0 01             	xor    eax,0x1
+ 80485ee:	0f be c8             	movsx  ecx,al
+ 80485f1:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
+ 80485f8:	c6 82 48 9d 04 08 01 	mov    BYTE PTR [edx+0x8049d48],0x1
+ 80485ff:	0f ae f0             	mfence 
+ 8048602:	eb 12                	jmp    8048616 <_ZL14thread_counterPv+0x46>
+ 8048604:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+ 8048608:	0f b6 05 4a 9d 04 08 	movzx  eax,BYTE PTR ds:0x8049d4a
+ 804860f:	0f b6 c0             	movzx  eax,al
+ 8048612:	39 c2                	cmp    edx,eax
+ 8048614:	75 5a                	jne    8048670 <_ZL14thread_counterPv+0xa0>
+ 8048616:	0f b6 81 48 9d 04 08 	movzx  eax,BYTE PTR [ecx+0x8049d48]
+ 804861d:	84 c0                	test   al,al
+ 804861f:	75 e7                	jne    8048608 <_ZL14thread_counterPv+0x38>
+ 8048621:	8b 35 50 9d 04 08    	mov    esi,DWORD PTR ds:0x8049d50
+ 8048627:	8b 3d 54 9d 04 08    	mov    edi,DWORD PTR ds:0x8049d54
+ 804862d:	0f b6 45 d7          	movzx  eax,BYTE PTR [ebp-0x29]
+ 8048631:	89 75 e0             	mov    DWORD PTR [ebp-0x20],esi
+ 8048634:	83 45 e0 01          	add    DWORD PTR [ebp-0x20],0x1
+ 8048638:	8b 75 e0             	mov    esi,DWORD PTR [ebp-0x20]
+ 804863b:	89 7d e4             	mov    DWORD PTR [ebp-0x1c],edi
+ 804863e:	83 55 e4 00          	adc    DWORD PTR [ebp-0x1c],0x0
+ 8048642:	83 eb 01             	sub    ebx,0x1
+ 8048645:	8b 7d e4             	mov    edi,DWORD PTR [ebp-0x1c]
+ 8048648:	89 35 50 9d 04 08    	mov    DWORD PTR ds:0x8049d50,esi
+ 804864e:	89 3d 54 9d 04 08    	mov    DWORD PTR ds:0x8049d54,edi
+ 8048654:	c6 82 48 9d 04 08 00 	mov    BYTE PTR [edx+0x8049d48],0x0
+ 804865b:	a2 4a 9d 04 08       	mov    ds:0x8049d4a,al
+ 8048660:	75 96                	jne    80485f8 <_ZL14thread_counterPv+0x28>
+ 8048662:	c7 04 24 00 00 00 00 	mov    DWORD PTR [esp],0x0
+ 8048669:	e8 2a fe ff ff       	call   8048498 <pthread_exit@plt>
+ 804866e:	66 90                	xchg   ax,ax
+ 8048670:	c6 82 48 9d 04 08 00 	mov    BYTE PTR [edx+0x8049d48],0x0
+ 8048677:	90                   	nop
+ 8048678:	0f b6 05 4a 9d 04 08 	movzx  eax,BYTE PTR ds:0x8049d4a
+ 804867f:	0f b6 c0             	movzx  eax,al
+ 8048682:	39 c2                	cmp    edx,eax
+ 8048684:	75 f2                	jne    8048678 <_ZL14thread_counterPv+0xa8>
+ 8048686:	e9 6d ff ff ff       	jmp    80485f8 <_ZL14thread_counterPv+0x28>
+ 804868b:	90                   	nop
+ 804868c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+
+08048690 <_Z4quitiPc>:
+ 8048690:	55                   	push   ebp
+ 8048691:	89 e5                	mov    ebp,esp
+ 8048693:	83 ec 18             	sub    esp,0x18
+ 8048696:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
+ 8048699:	c7 04 24 40 8a 04 08 	mov    DWORD PTR [esp],0x8048a40
+ 80486a0:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 80486a4:	e8 1f fe ff ff       	call   80484c8 <printf@plt>
+ 80486a9:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+ 80486ac:	89 04 24             	mov    DWORD PTR [esp],eax
+ 80486af:	e8 34 fe ff ff       	call   80484e8 <exit@plt>
+ 80486b4:	8d b6 00 00 00 00    	lea    esi,[esi+0x0]
+ 80486ba:	8d bf 00 00 00 00    	lea    edi,[edi+0x0]
+
+080486c0 <_Z4lockc>:
+ 80486c0:	55                   	push   ebp
+ 80486c1:	89 e5                	mov    ebp,esp
+ 80486c3:	0f b6 4d 08          	movzx  ecx,BYTE PTR [ebp+0x8]
+ 80486c7:	0f be d1             	movsx  edx,cl
+ 80486ca:	c6 82 48 9d 04 08 01 	mov    BYTE PTR [edx+0x8049d48],0x1
+ 80486d1:	0f ae f0             	mfence 
+ 80486d4:	83 f1 01             	xor    ecx,0x1
+ 80486d7:	0f be c9             	movsx  ecx,cl
+ 80486da:	eb 12                	jmp    80486ee <_Z4lockc+0x2e>
+ 80486dc:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+ 80486e0:	0f b6 05 4a 9d 04 08 	movzx  eax,BYTE PTR ds:0x8049d4a
+ 80486e7:	0f b6 c0             	movzx  eax,al
+ 80486ea:	39 c2                	cmp    edx,eax
+ 80486ec:	75 12                	jne    8048700 <_Z4lockc+0x40>
+ 80486ee:	0f b6 81 48 9d 04 08 	movzx  eax,BYTE PTR [ecx+0x8049d48]
+ 80486f5:	84 c0                	test   al,al
+ 80486f7:	75 e7                	jne    80486e0 <_Z4lockc+0x20>
+ 80486f9:	5d                   	pop    ebp
+ 80486fa:	c3                   	ret    
+ 80486fb:	90                   	nop
+ 80486fc:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+ 8048700:	c6 82 48 9d 04 08 00 	mov    BYTE PTR [edx+0x8049d48],0x0
+ 8048707:	90                   	nop
+ 8048708:	0f b6 05 4a 9d 04 08 	movzx  eax,BYTE PTR ds:0x8049d4a
+ 804870f:	0f b6 c0             	movzx  eax,al
+ 8048712:	39 c2                	cmp    edx,eax
+ 8048714:	75 f2                	jne    8048708 <_Z4lockc+0x48>
+ 8048716:	c6 82 48 9d 04 08 01 	mov    BYTE PTR [edx+0x8049d48],0x1
+ 804871d:	0f ae f0             	mfence 
+ 8048720:	eb cc                	jmp    80486ee <_Z4lockc+0x2e>
+ 8048722:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
+ 8048729:	8d bc 27 00 00 00 00 	lea    edi,[edi+eiz*1+0x0]
+
+08048730 <_Z6unlockc>:
+ 8048730:	55                   	push   ebp
+ 8048731:	89 e5                	mov    ebp,esp
+ 8048733:	0f b6 45 08          	movzx  eax,BYTE PTR [ebp+0x8]
+ 8048737:	5d                   	pop    ebp
+ 8048738:	3c 01                	cmp    al,0x1
+ 804873a:	0f be d0             	movsx  edx,al
+ 804873d:	0f 95 c0             	setne  al
+ 8048740:	c6 82 48 9d 04 08 00 	mov    BYTE PTR [edx+0x8049d48],0x0
+ 8048747:	a2 4a 9d 04 08       	mov    ds:0x8049d4a,al
+ 804874c:	c3                   	ret    
+ 804874d:	8d 76 00             	lea    esi,[esi+0x0]
+
+08048750 <main>:
+ 8048750:	55                   	push   ebp
+ 8048751:	31 c0                	xor    eax,eax
+ 8048753:	89 e5                	mov    ebp,esp
+ 8048755:	83 e4 f0             	and    esp,0xfffffff0
+ 8048758:	81 ec 30 01 00 00    	sub    esp,0x130
+ 804875e:	b9 20 00 00 00       	mov    ecx,0x20
+ 8048763:	89 b4 24 28 01 00 00 	mov    DWORD PTR [esp+0x128],esi
+ 804876a:	8d b4 24 98 00 00 00 	lea    esi,[esp+0x98]
+ 8048771:	89 bc 24 2c 01 00 00 	mov    DWORD PTR [esp+0x12c],edi
+ 8048778:	89 f7                	mov    edi,esi
+ 804877a:	89 9c 24 24 01 00 00 	mov    DWORD PTR [esp+0x124],ebx
+ 8048781:	8d 5c 24 18          	lea    ebx,[esp+0x18]
+ 8048785:	f3 ab                	rep stos DWORD PTR es:[edi],eax
+ 8048787:	89 df                	mov    edi,ebx
+ 8048789:	c7 84 24 98 00 00 00 	mov    DWORD PTR [esp+0x98],0x1
+ 8048790:	01 00 00 00 
+ 8048794:	b1 20                	mov    cl,0x20
+ 8048796:	f3 ab                	rep stos DWORD PTR es:[edi],eax
+ 8048798:	8d 84 24 1c 01 00 00 	lea    eax,[esp+0x11c]
+ 804879f:	c7 44 24 18 02 00 00 	mov    DWORD PTR [esp+0x18],0x2
+ 80487a6:	00 
+ 80487a7:	c7 44 24 0c 00 00 00 	mov    DWORD PTR [esp+0xc],0x0
+ 80487ae:	00 
+ 80487af:	c7 44 24 08 d0 85 04 	mov    DWORD PTR [esp+0x8],0x80485d0
+ 80487b6:	08 
+ 80487b7:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ 80487be:	00 
+ 80487bf:	89 04 24             	mov    DWORD PTR [esp],eax
+ 80487c2:	e8 11 fd ff ff       	call   80484d8 <pthread_create@plt>
+ 80487c7:	85 c0                	test   eax,eax
+ 80487c9:	0f 85 f1 00 00 00    	jne    80488c0 <main+0x170>
+ 80487cf:	8d 84 24 18 01 00 00 	lea    eax,[esp+0x118]
+ 80487d6:	c7 44 24 0c 01 00 00 	mov    DWORD PTR [esp+0xc],0x1
+ 80487dd:	00 
+ 80487de:	c7 44 24 08 d0 85 04 	mov    DWORD PTR [esp+0x8],0x80485d0
+ 80487e5:	08 
+ 80487e6:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ 80487ed:	00 
+ 80487ee:	89 04 24             	mov    DWORD PTR [esp],eax
+ 80487f1:	e8 e2 fc ff ff       	call   80484d8 <pthread_create@plt>
+ 80487f6:	85 c0                	test   eax,eax
+ 80487f8:	0f 85 e2 00 00 00    	jne    80488e0 <main+0x190>
+ 80487fe:	8b 84 24 1c 01 00 00 	mov    eax,DWORD PTR [esp+0x11c]
+ 8048805:	89 74 24 08          	mov    DWORD PTR [esp+0x8],esi
+ 8048809:	c7 44 24 04 80 00 00 	mov    DWORD PTR [esp+0x4],0x80
+ 8048810:	00 
+ 8048811:	89 04 24             	mov    DWORD PTR [esp],eax
+ 8048814:	e8 df fc ff ff       	call   80484f8 <pthread_setaffinity_np@plt>
+ 8048819:	85 c0                	test   eax,eax
+ 804881b:	0f 85 df 00 00 00    	jne    8048900 <main+0x1b0>
+ 8048821:	8b 84 24 18 01 00 00 	mov    eax,DWORD PTR [esp+0x118]
+ 8048828:	89 5c 24 08          	mov    DWORD PTR [esp+0x8],ebx
+ 804882c:	c7 44 24 04 80 00 00 	mov    DWORD PTR [esp+0x4],0x80
+ 8048833:	00 
+ 8048834:	89 04 24             	mov    DWORD PTR [esp],eax
+ 8048837:	e8 bc fc ff ff       	call   80484f8 <pthread_setaffinity_np@plt>
+ 804883c:	85 c0                	test   eax,eax
+ 804883e:	0f 85 fc 00 00 00    	jne    8048940 <main+0x1f0>
+ 8048844:	8b 84 24 1c 01 00 00 	mov    eax,DWORD PTR [esp+0x11c]
+ 804884b:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ 8048852:	00 
+ 8048853:	89 04 24             	mov    DWORD PTR [esp],eax
+ 8048856:	e8 2d fc ff ff       	call   8048488 <pthread_join@plt>
+ 804885b:	85 c0                	test   eax,eax
+ 804885d:	0f 85 bd 00 00 00    	jne    8048920 <main+0x1d0>
+ 8048863:	8b 84 24 18 01 00 00 	mov    eax,DWORD PTR [esp+0x118]
+ 804886a:	c7 44 24 04 00 00 00 	mov    DWORD PTR [esp+0x4],0x0
+ 8048871:	00 
+ 8048872:	89 04 24             	mov    DWORD PTR [esp],eax
+ 8048875:	e8 0e fc ff ff       	call   8048488 <pthread_join@plt>
+ 804887a:	85 c0                	test   eax,eax
+ 804887c:	0f 85 de 00 00 00    	jne    8048960 <main+0x210>
+ 8048882:	a1 50 9d 04 08       	mov    eax,ds:0x8049d50
+ 8048887:	8b 15 54 9d 04 08    	mov    edx,DWORD PTR ds:0x8049d54
+ 804888d:	c7 04 24 a1 8a 04 08 	mov    DWORD PTR [esp],0x8048aa1
+ 8048894:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 8048898:	89 54 24 08          	mov    DWORD PTR [esp+0x8],edx
+ 804889c:	e8 27 fc ff ff       	call   80484c8 <printf@plt>
+ 80488a1:	31 c0                	xor    eax,eax
+ 80488a3:	8b 9c 24 24 01 00 00 	mov    ebx,DWORD PTR [esp+0x124]
+ 80488aa:	8b b4 24 28 01 00 00 	mov    esi,DWORD PTR [esp+0x128]
+ 80488b1:	8b bc 24 2c 01 00 00 	mov    edi,DWORD PTR [esp+0x12c]
+ 80488b8:	89 ec                	mov    esp,ebp
+ 80488ba:	5d                   	pop    ebp
+ 80488bb:	c3                   	ret    
+ 80488bc:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+ 80488c0:	c7 44 24 04 43 8a 04 	mov    DWORD PTR [esp+0x4],0x8048a43
+ 80488c7:	08 
+ 80488c8:	c7 04 24 40 8a 04 08 	mov    DWORD PTR [esp],0x8048a40
+ 80488cf:	e8 f4 fb ff ff       	call   80484c8 <printf@plt>
+ 80488d4:	c7 04 24 0b 00 00 00 	mov    DWORD PTR [esp],0xb
+ 80488db:	e8 08 fc ff ff       	call   80484e8 <exit@plt>
+ 80488e0:	c7 44 24 04 5d 8a 04 	mov    DWORD PTR [esp+0x4],0x8048a5d
+ 80488e7:	08 
+ 80488e8:	c7 04 24 40 8a 04 08 	mov    DWORD PTR [esp],0x8048a40
+ 80488ef:	e8 d4 fb ff ff       	call   80484c8 <printf@plt>
+ 80488f4:	c7 04 24 15 00 00 00 	mov    DWORD PTR [esp],0x15
+ 80488fb:	e8 e8 fb ff ff       	call   80484e8 <exit@plt>
+ 8048900:	c7 44 24 04 a8 8a 04 	mov    DWORD PTR [esp+0x4],0x8048aa8
+ 8048907:	08 
+ 8048908:	c7 04 24 40 8a 04 08 	mov    DWORD PTR [esp],0x8048a40
+ 804890f:	e8 b4 fb ff ff       	call   80484c8 <printf@plt>
+ 8048914:	c7 04 24 0a 00 00 00 	mov    DWORD PTR [esp],0xa
+ 804891b:	e8 c8 fb ff ff       	call   80484e8 <exit@plt>
+ 8048920:	c7 44 24 04 77 8a 04 	mov    DWORD PTR [esp+0x4],0x8048a77
+ 8048927:	08 
+ 8048928:	c7 04 24 40 8a 04 08 	mov    DWORD PTR [esp],0x8048a40
+ 804892f:	e8 94 fb ff ff       	call   80484c8 <printf@plt>
+ 8048934:	c7 04 24 0c 00 00 00 	mov    DWORD PTR [esp],0xc
+ 804893b:	e8 a8 fb ff ff       	call   80484e8 <exit@plt>
+ 8048940:	c7 44 24 04 c8 8a 04 	mov    DWORD PTR [esp+0x4],0x8048ac8
+ 8048947:	08 
+ 8048948:	c7 04 24 40 8a 04 08 	mov    DWORD PTR [esp],0x8048a40
+ 804894f:	e8 74 fb ff ff       	call   80484c8 <printf@plt>
+ 8048954:	c7 04 24 14 00 00 00 	mov    DWORD PTR [esp],0x14
+ 804895b:	e8 88 fb ff ff       	call   80484e8 <exit@plt>
+ 8048960:	c7 44 24 04 8c 8a 04 	mov    DWORD PTR [esp+0x4],0x8048a8c
+ 8048967:	08 
+ 8048968:	c7 04 24 40 8a 04 08 	mov    DWORD PTR [esp],0x8048a40
+ 804896f:	e8 54 fb ff ff       	call   80484c8 <printf@plt>
+ 8048974:	c7 04 24 16 00 00 00 	mov    DWORD PTR [esp],0x16
+ 804897b:	e8 68 fb ff ff       	call   80484e8 <exit@plt>
+
+08048980 <__libc_csu_fini>:
+ 8048980:	55                   	push   ebp
+ 8048981:	89 e5                	mov    ebp,esp
+ 8048983:	5d                   	pop    ebp
+ 8048984:	c3                   	ret    
+ 8048985:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+ 8048989:	8d bc 27 00 00 00 00 	lea    edi,[edi+eiz*1+0x0]
+
+08048990 <__libc_csu_init>:
+ 8048990:	55                   	push   ebp
+ 8048991:	89 e5                	mov    ebp,esp
+ 8048993:	57                   	push   edi
+ 8048994:	56                   	push   esi
+ 8048995:	53                   	push   ebx
+ 8048996:	e8 4f 00 00 00       	call   80489ea <__i686.get_pc_thunk.bx>
+ 804899b:	81 c3 71 13 00 00    	add    ebx,0x1371
+ 80489a1:	83 ec 1c             	sub    esp,0x1c
+ 80489a4:	e8 9f fa ff ff       	call   8048448 <_init>
+ 80489a9:	8d bb f8 fe ff ff    	lea    edi,[ebx-0x108]
+ 80489af:	8d 83 f8 fe ff ff    	lea    eax,[ebx-0x108]
+ 80489b5:	29 c7                	sub    edi,eax
+ 80489b7:	c1 ff 02             	sar    edi,0x2
+ 80489ba:	85 ff                	test   edi,edi
+ 80489bc:	74 24                	je     80489e2 <__libc_csu_init+0x52>
+ 80489be:	31 f6                	xor    esi,esi
+ 80489c0:	8b 45 10             	mov    eax,DWORD PTR [ebp+0x10]
+ 80489c3:	89 44 24 08          	mov    DWORD PTR [esp+0x8],eax
+ 80489c7:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
+ 80489ca:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 80489ce:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+ 80489d1:	89 04 24             	mov    DWORD PTR [esp],eax
+ 80489d4:	ff 94 b3 f8 fe ff ff 	call   DWORD PTR [ebx+esi*4-0x108]
+ 80489db:	83 c6 01             	add    esi,0x1
+ 80489de:	39 fe                	cmp    esi,edi
+ 80489e0:	72 de                	jb     80489c0 <__libc_csu_init+0x30>
+ 80489e2:	83 c4 1c             	add    esp,0x1c
+ 80489e5:	5b                   	pop    ebx
+ 80489e6:	5e                   	pop    esi
+ 80489e7:	5f                   	pop    edi
+ 80489e8:	5d                   	pop    ebp
+ 80489e9:	c3                   	ret    
+
+080489ea <__i686.get_pc_thunk.bx>:
+ 80489ea:	8b 1c 24             	mov    ebx,DWORD PTR [esp]
+ 80489ed:	c3                   	ret    
+ 80489ee:	90                   	nop
+ 80489ef:	90                   	nop
+
+080489f0 <__do_global_ctors_aux>:
+ 80489f0:	55                   	push   ebp
+ 80489f1:	89 e5                	mov    ebp,esp
+ 80489f3:	53                   	push   ebx
+ 80489f4:	83 ec 04             	sub    esp,0x4
+ 80489f7:	a1 04 9c 04 08       	mov    eax,ds:0x8049c04
+ 80489fc:	83 f8 ff             	cmp    eax,0xffffffff
+ 80489ff:	74 13                	je     8048a14 <__do_global_ctors_aux+0x24>
+ 8048a01:	bb 04 9c 04 08       	mov    ebx,0x8049c04
+ 8048a06:	66 90                	xchg   ax,ax
+ 8048a08:	83 eb 04             	sub    ebx,0x4
+ 8048a0b:	ff d0                	call   eax
+ 8048a0d:	8b 03                	mov    eax,DWORD PTR [ebx]
+ 8048a0f:	83 f8 ff             	cmp    eax,0xffffffff
+ 8048a12:	75 f4                	jne    8048a08 <__do_global_ctors_aux+0x18>
+ 8048a14:	83 c4 04             	add    esp,0x4
+ 8048a17:	5b                   	pop    ebx
+ 8048a18:	5d                   	pop    ebp
+ 8048a19:	c3                   	ret    
+ 8048a1a:	90                   	nop
+ 8048a1b:	90                   	nop
+
+Disassembly of section .fini:
+
+08048a1c <_fini>:
+ 8048a1c:	55                   	push   ebp
+ 8048a1d:	89 e5                	mov    ebp,esp
+ 8048a1f:	53                   	push   ebx
+ 8048a20:	83 ec 04             	sub    esp,0x4
+ 8048a23:	e8 00 00 00 00       	call   8048a28 <_fini+0xc>
+ 8048a28:	5b                   	pop    ebx
+ 8048a29:	81 c3 e4 12 00 00    	add    ebx,0x12e4
+ 8048a2f:	e8 0c fb ff ff       	call   8048540 <__do_global_dtors_aux>
+ 8048a34:	59                   	pop    ecx
+ 8048a35:	5b                   	pop    ebx
+ 8048a36:	c9                   	leave  
+ 8048a37:	c3                   	ret    
