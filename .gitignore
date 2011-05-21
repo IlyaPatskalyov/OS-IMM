@@ -1,0 +1,8 @@
+a.out
+*.img
+*.o
+*.out
+*.out.*
+*.dump
+*.bin
+bin/

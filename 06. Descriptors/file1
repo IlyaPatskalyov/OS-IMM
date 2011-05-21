@@ -1,0 +1,20 @@
+[General]
+tmp_directory=~/runmvs
+host = um32
+
+
+[Mpirun]
+#Default quantum time
+quantum=0       Do not use quantum
+
+#Default maximum execution time of programm
+maxtime=300
+
+#Directory for input/output files
+stdiodir=`pwd`  Use current directory
+
+#Rules for distributing Tasks on processors
+transform=/common/runmvs/bin/p4topg.py     Try use sequntional tasks on one processor
+
+restart=0          Do not restart task afrer its finishing
+
