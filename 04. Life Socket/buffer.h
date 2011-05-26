@@ -1,24 +1,30 @@
 class Buffer {
 private:
 	static unsigned int countFreeBuffers;
-
-public:
-	int nbytes;
 	unsigned int countClients;
-	char buffer[2000];
 
 	bool canGet(){
 		return countClients > 0 || (countClients == 0 && countFreeBuffers > 2 );
 	}
-	
-	void get(int sock){
+
+public:
+	int nbytes;
+	char buffer[2000];
+
+	bool canUseForCalc(){
+		return countClients == 0;
+	}
+	bool get(){
+		if (!canGet())
+			return false;
 		if (countClients == 0){
 			countFreeBuffers--;
 		}
 		countClients++;
 		nbytes = 1641; // strlen(buffer);
+		return true;
 	}
-	bool free(){
+	void free(){
 		countClients--;
 		if (countClients == 0){
 			countFreeBuffers++;
