@@ -2,9 +2,9 @@ class Aio {
 private:
 	Buffer * buffer;
 	aiocb * aio;
-	pthread_mutex_t * mutex;
+	Pool * pool;
 public:    
-	Aio(int sock, Buffer * buffer, pthread_mutex_t* mutex) : buffer(buffer), mutex(mutex) {
+	Aio(int sock, Pool * pool, Buffer * buffer) : buffer(buffer),  pool(pool) {
 		aio = new aiocb;
 		memset(aio, 0, sizeof(aio));
 		aio->aio_fildes = sock;
@@ -42,7 +42,7 @@ private:
 		if (aio_write(aio)){
 			fprintf(stderr, "write error");
 			if (buffer != NULL)
-				buffer->free();
+				pool->detachClient(buffer);
 			close(aio->aio_fildes);
 			delete this;
 		}
@@ -50,12 +50,8 @@ private:
 	static void bufferFinishCallback(int sig, siginfo_t *info, void *context){
 		Aio* item = (Aio *)info->si_value.sival_ptr;
 		close(item->aio->aio_fildes);
-		if (pthread_mutex_lock(item->mutex))
-			quit(31, (char*)"ERROR lock buffers");
 		if (item->buffer != NULL)
-			item->buffer->free();
-		if (pthread_mutex_unlock(item->mutex))
-			quit(32, (char*)"ERROR unlock buffers");
+			item->pool->detachClient(item->buffer);
 		delete item;
 	}
 	static void liteFinishCallback(int sig, siginfo_t *info, void *context){
